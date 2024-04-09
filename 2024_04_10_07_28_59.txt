@@ -1,0 +1,112 @@
+✅ move_semantics5 pass
+✅ intro2 pass
+✅ options3 pass
+✅ variables1 pass
+✅ move_semantics6 pass
+❌ lifetimes2 points 0/1
+❌ lifetimes3 points 0/1
+✅ variables2 pass
+❌ tests1 points 0/1
+❌ tests2 points 0/1
+✅ structs1 pass
+❌ tests3 points 0/1
+✅ variables3 pass
+❌ tests4 points 0/1
+❌ iterators1 points 0/1
+✅ structs2 pass
+❌ iterators2 points 0/1
+✅ variables4 pass
+✅ variables5 pass
+❌ errors1 points 0/1
+✅ structs3 pass
+❌ iterators3 points 0/1
+❌ errors2 points 0/1
+✅ variables6 pass
+❌ iterators4 points 0/1
+❌ errors3 points 0/1
+✅ enums1 pass
+✅ functions1 pass
+✅ enums2 pass
+❌ iterators5 points 0/1
+❌ errors4 points 0/1
+✅ functions2 pass
+❌ errors5 points 0/1
+❌ box1 points 0/1
+✅ functions3 pass
+✅ enums3 pass
+❌ errors6 points 0/1
+❌ rc1 points 0/1
+✅ functions4 pass
+❌ generics1 points 0/1
+✅ strings1 pass
+❌ generics2 points 0/1
+❌ arc1 points 0/1
+❌ traits1 points 0/1
+❌ cow1 points 0/1
+✅ functions5 pass
+✅ strings2 pass
+❌ traits2 points 0/1
+❌ traits3 points 0/1
+❌ traits4 points 0/1
+✅ if1 pass
+❌ traits5 points 0/1
+✅ strings3 pass
+❌ threads1 points 0/1
+❌ threads2 points 0/1
+✅ if2 pass
+❌ threads3 points 0/1
+✅ strings4 pass
+❌ quiz3 points 0/1
+❌ macros1 points 0/1
+❌ lifetimes1 points 0/1
+❌ macros2 points 0/1
+❌ macros4 points 0/1
+✅ modules1 pass
+❌ macros3 points 0/1
+✅ if3 pass
+❌ try_from_into points 0/1
+✅ modules2 pass
+❌ as_ref_mut points 0/1
+✅ quiz1 pass
+✅ modules3 pass
+❌ tests5 points 0/1
+✅ primitive_types1 pass
+❌ tests6 points 0/1
+✅ primitive_types2 pass
+✅ hashmaps1 pass
+✅ primitive_types3 pass
+✅ hashmaps2 pass
+✅ hashmaps3 pass
+✅ primitive_types4 pass
+❌ tests7 points 0/1
+✅ quiz2 pass
+✅ primitive_types5 pass
+❌ tests8 points 0/1
+✅ options1 pass
+✅ primitive_types6 pass
+✅ options2 pass
+✅ vecs1 pass
+❌ algorithm3 points 0/1
+✅ vecs2 pass
+❌ algorithm4 points 0/1
+✅ move_semantics1 pass
+❌ algorithm5 points 0/1
+✅ move_semantics2 pass
+❌ tests9 points 0/1
+✅ move_semantics3 pass
+❌ algorithm6 points 0/1
+❌ algorithm1 points 0/1
+✅ move_semantics4 pass
+❌ algorithm7 points 0/1
+❌ algorithm8 points 0/1
+❌ algorithm2 points 0/1
+❌ using_as points 0/1
+❌ algorithm9 points 0/1
+❌ algorithm10 points 0/1
+❌ from_into points 0/1
+❌ from_str points 0/1
+❌ clippy2 points 0/1
+❌ clippy3 points 0/1
+❌ clippy1 points 0/1
+
+Points: 50/110
