@@ -20,8 +20,13 @@ struct Foo {
 unsafe fn raw_pointer_to_box(ptr: *mut Foo) -> Box<Foo> {
     // SAFETY: The `ptr` contains an owned box of `Foo` by contract. We
     // simply reconstruct the box from that pointer.
-    let mut ret: Box<Foo> = unsafe { ??? };
-    todo!("The rest of the code goes here")
+    let mut ret: Box<Foo> = unsafe { Box::from_raw(ptr) };
+    // todo!("The rest of the code goes here")
+    // Check if the `b` field is None, and if so, initialize it with a default value.
+    if ret.b.is_none() {
+        ret.b = Some("hello".to_owned());
+    }
+    ret
 }
 
 #[cfg(test)]
