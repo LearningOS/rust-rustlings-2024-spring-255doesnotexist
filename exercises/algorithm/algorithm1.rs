@@ -2,7 +2,6 @@
 	single linked list merge
 	This problem requires you to merge two ordered singly linked lists into one ordered singly linked list
 */
-// I AM NOT DONE
 
 use std::fmt::{self, Display, Formatter};
 use std::ptr::NonNull;
@@ -29,13 +28,13 @@ struct LinkedList<T> {
     end: Option<NonNull<Node<T>>>,
 }
 
-impl<T> Default for LinkedList<T> {
+impl<T: Ord + Clone> Default for LinkedList<T> {
     fn default() -> Self {
         Self::new()
     }
 }
 
-impl<T> LinkedList<T> {
+impl<T: Ord + Clone> LinkedList<T> {
     pub fn new() -> Self {
         Self {
             length: 0,
@@ -69,15 +68,52 @@ impl<T> LinkedList<T> {
             },
         }
     }
-	pub fn merge(list_a:LinkedList<T>,list_b:LinkedList<T>) -> Self
-	{
-		//TODO
-		Self {
-            length: 0,
-            start: None,
-            end: None,
+    pub fn merge(mut list_a: Self, mut list_b: Self) -> Self {
+        let mut list_c = Self::new();
+        let mut current_a = list_a.start;
+        let mut current_b = list_b.start;
+
+        // 循环直到任一链表遍历完成
+        while let (Some(a), Some(b)) = (current_a, current_b) {
+            let node_a = unsafe { a.as_ref() };
+            let node_b = unsafe { b.as_ref() };
+
+            // 比较两个节点值，将较小的节点添加到list_c中
+            if node_a.val <= node_b.val {
+                list_c.add(node_a.val.clone());
+                current_a = node_a.next;
+            } else {
+                list_c.add(node_b.val.clone());
+                current_b = node_b.next;
+            }
         }
-	}
+
+        // 如果list_a还有剩余节点，将它们添加到list_c中
+        while let Some(a) = current_a {
+            let node_a = unsafe { a.as_ref() };
+            list_c.add(node_a.val.clone());
+            current_a = node_a.next;
+        }
+
+        // 如果list_b还有剩余节点，将它们添加到list_c中
+        while let Some(b) = current_b {
+            let node_b = unsafe { b.as_ref() };
+            list_c.add(node_b.val.clone());
+            current_b = node_b.next;
+        }
+
+        // 清理list_a和list_b的节点，避免内存泄漏
+        while list_a.start.is_some() {
+            let node = unsafe { Box::from_raw(list_a.start.unwrap().as_ptr()) };
+            list_a.start = node.next;
+        }
+        while list_b.start.is_some() {
+            let node = unsafe { Box::from_raw(list_b.start.unwrap().as_ptr()) };
+            list_b.start = node.next;
+        }
+
+        list_c
+    }
 }
 
 impl<T> Display for LinkedList<T>
