@@ -3,10 +3,36 @@
 	This problem requires you to implement a sorting algorithm
 	you can use bubble sorting, insertion sorting, heap sorting, etc.
 */
-// I AM NOT DONE
 
-fn sort<T>(array: &mut [T]){
-	//TODO
+fn partition<T>(array: &mut [T], low: isize, high: isize) -> isize
+where
+    T: Ord + Clone,
+{
+    let pivot = array[high as usize].clone();
+    let mut i = low - 1;
+    for j in low..high {
+        if array[j as usize] < pivot {
+            i += 1;
+            array.swap(i as usize, j as usize);
+        }
+    }
+    array.swap((i + 1) as usize, high as usize);
+    i + 1
+}
+
+fn qsort<T>(array: &mut [T], low: isize, high: isize)
+where
+    T: Ord + Clone,
+{
+    if low < high {
+        let pivot = partition(array, low, high);
+        qsort(array, low, pivot - 1);
+        qsort(array, pivot + 1, high);
+    }
+}
+
+fn sort<T: std::cmp::Ord + Clone>(array: &mut [T]){
+    qsort(array, 0, array.len() as isize - 1);
 }
 #[cfg(test)]
 mod tests {
