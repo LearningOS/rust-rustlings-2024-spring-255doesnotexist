@@ -3,7 +3,6 @@
 	This question requires you to use a stack to achieve a bracket match
 */
 
-// I AM NOT DONE
 #[derive(Debug)]
 struct Stack<T> {
 	size: usize,
@@ -31,7 +30,12 @@ impl<T> Stack<T> {
 		self.size += 1;
 	}
 	fn pop(&mut self) -> Option<T> {
-		// TODO
+		if 0 == self.size {
+			return None;
+		} else {
+			self.size -= 1;
+			return self.data.pop();
+		}
 		None
 	}
 	fn peek(&self) -> Option<&T> {
@@ -99,10 +103,32 @@ impl<'a, T> Iterator for IterMut<'a, T> {
 	}
 }
 
+use std::collections::HashMap;
+
 fn bracket_match(bracket: &str) -> bool
 {
 	//TODO
-	true
+	let mut stack = Stack::new();
+	let bracket_match: HashMap<char, char> = [('(', ')'), ('[', ']'), ('{', '}')].iter().cloned().collect();
+	for i in bracket.chars() {
+		if i == '(' || i == '[' || i == '{' {
+			stack.push(i);
+		}
+		else if i == ')' || i == ']' || i == '}' {
+			match stack.is_empty() {
+				true => return false,
+				false => match bracket_match.get(&stack.peek().unwrap()).unwrap().cmp(&i) {
+					std::cmp::Ordering::Equal => {
+						stack.pop();
+						// 没注意到 pop 没有被实现，想了半天我的括号匹配哪有问题，尬住了半小时。 
+						// 不写 todo! 害死人，表示强烈抗议！ 
+					},
+					_ => return false,
+				},
+			}
+		}
+	}
+	stack.is_empty()
 }
 
 #[cfg(test)]
